@@ -24,10 +24,7 @@ const App = () => {
     setErrorMsg(null);
     axios.get('https://type.fit/api/quotes').then((res) => {
       setLoading(false);
-      console.log(res.data[10].text);
       const random = Math.floor(Math.random() * res.data.length);
-      console.log(res.data[random].text, res.data[random].author);
-
       setQuote(res.data[random].text);
       setAuthor(res.data[random].author);
 
