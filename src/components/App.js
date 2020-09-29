@@ -33,10 +33,10 @@ const App = () => {
       }
     });
   };
-  const cardText = loading
-    ? 'Loading...'
-    : errorMsg
+  const cardText = errorMsg
     ? 'Oops! Check your internet connection and try again.'
+    : quote === undefined
+    ? 'Loading...'
     : `“${quote}”`;
 
   return (
