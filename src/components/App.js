@@ -14,15 +14,18 @@ const App = () => {
   const [author, setAuthor] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetchQuote();
   }, []);
 
   const fetchQuote = () => {
-    setLoading(true);
+    setBtnLoading(true);
     setErrorMsg(null);
     axios.get('https://type.fit/api/quotes').then((res) => {
+      setBtnLoading(false);
       setLoading(false);
       const random = Math.floor(Math.random() * res.data.length);
       setQuote(res.data[random].text);
@@ -35,7 +38,7 @@ const App = () => {
   };
   const cardText = errorMsg
     ? 'Oops! Check your internet connection and try again.'
-    : quote === undefined
+    : loading
     ? 'Loading...'
     : `“${quote}”`;
 
@@ -50,7 +53,8 @@ const App = () => {
           loading={loading}
         >
           <Button
-            loading={loading}
+            loading={btnLoading}
+            setBtnLoading={setBtnLoading}
             errorMsg={errorMsg}
             fetchQuote={fetchQuote}
           />
