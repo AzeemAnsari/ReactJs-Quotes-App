@@ -14,14 +14,24 @@ body{
   height: 100vh;
   box-sizing: border-box;
   font-family: 'Baloo 2', cursive;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${bgImg}) no-repeat center / cover;
+    */
+    background: #334d50;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #cbcaa5, #334d50);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #cbcaa5, #334d50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 `;
 
 export const AppWrapper = styled.div`
-  height: 100%;
+  /* min-height: 100%; */
   position: relative;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(${bgImg}) no-repeat center / cover;
+  flex-grow: 1;
 `;
 
 export const LogoDiv = styled.div`
@@ -106,4 +116,9 @@ export const QuoteText = styled.h1`
 export const Author = styled.div`
   text-align: right;
   margin-top: 1rem;
+`;
+
+export const Footer = styled.footer`
+  text-align: center;
+  color: #fff;
 `;

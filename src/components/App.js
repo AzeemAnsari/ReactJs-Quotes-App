@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import Logo from '../images/logo.png';
 
-import { GlobalStyles, AppWrapper } from './Styles';
+import { GlobalStyles, AppWrapper, Footer } from './Styles';
 
 const App = () => {
   const [quote, setQuote] = useState([]);
@@ -46,12 +46,7 @@ const App = () => {
     <React.Fragment>
       <AppWrapper>
         <Header Logo={Logo} />
-        <Card
-          cardText={cardText}
-          author={author}
-          errorMsg={errorMsg}
-          loading={loading}
-        >
+        <Card cardText={cardText} author={author} errorMsg={errorMsg} loading={loading}>
           <Button
             loading={btnLoading}
             setBtnLoading={setBtnLoading}
@@ -60,6 +55,7 @@ const App = () => {
           />
         </Card>
       </AppWrapper>
+      <Footer>&copy; {new Date().getFullYear()} - Azeem Ansari</Footer>
       <GlobalStyles />
     </React.Fragment>
   );
