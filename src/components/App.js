@@ -22,18 +22,27 @@ const App = () => {
   }, []);
 
   const fetchQuote = () => {
+    let category = ['inspirational','intelligence','knowledge','success'];
+    
     setBtnLoading(true);
     setErrorMsg(null);
-    axios.get('https://type.fit/api/quotes').then((res) => {
+    axios.get(`https://api.api-ninjas.com/v1/quotes?category=${category[Math.floor(Math.random() * category.length)]}`, {
+      method: 'GET',
+      headers: { 'X-Api-Key': process.env.REACT_APP_API_KEY},
+      contentType: 'application/json',
+    }).then((res) => {
       setBtnLoading(false);
       setLoading(false);
-      const random = Math.floor(Math.random() * res.data.length);
-      setQuote(res.data[random].text);
-      setAuthor(res.data[random].author);
+      // const random = Math.floor(Math.random() * res.data.length);
+      setQuote(res.data[0].quote);
+      setAuthor(res.data[0].author);
 
-      if (res.data[random].text === undefined) {
+      if (!res.data) {
         setErrorMsg(true);
       }
+    }).catch((err) => {
+      console.log(err?.message);
+      
     });
   };
   const cardText = errorMsg
