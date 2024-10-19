@@ -2,7 +2,7 @@
 
 ### [Live Site](https://quotes.azeemansari.in/)
 
-![React Advice PWA](https://ibb.co/QQmL1C0)
+![React Advice PWA](https://i.ibb.co/KhCHwZ9/Quotes.jpg)
 
 ## Introduction
 This is a code repository for the ReactJs Quotes PWA.
