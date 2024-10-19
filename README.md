@@ -1,6 +1,6 @@
 # ReactJs Quotes PWA
 
-### [Live Site](https://quotes.azeemansari.me/)
+### [Live Site](https://quotes.azeemansari.in/)
 
 ![React Advice PWA](https://i.ibb.co/KhCHwZ9/Quotes.jpg)
 
