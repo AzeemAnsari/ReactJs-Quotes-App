@@ -7,7 +7,7 @@
 ## Introduction
 This is a code repository for the ReactJs Quotes PWA.
 
-In this app, I have used [https://type.fit/api/quotes](https://github.com/lukePeavey/quotable) api to fetch random quotes. 
+In this app, I have used [https://github.com/lukePeavey/quotable](https://github.com/lukePeavey/quotable) api to fetch random quotes. 
 
 ### Setup:
 - run ```npm i && npm start``` for both client and server side to start the development server
