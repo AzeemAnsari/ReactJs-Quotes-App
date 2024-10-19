@@ -5,8 +5,8 @@ import { Btn } from './Styles';
 const Button = ({ loading, fetchQuote, errorMsg }) => {
   return (
     <React.Fragment>
-      <Btn onClick={fetchQuote}>
-        {loading ? 'Loading...' : errorMsg ? 'Reload' : 'New Quote'}
+      <Btn disabled={loading} onClick={fetchQuote}>
+        {errorMsg ? 'Reload' : 'New Quote'}
       </Btn>
     </React.Fragment>
   );

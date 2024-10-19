@@ -14,42 +14,35 @@ const App = () => {
   const [author, setAuthor] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [btnLoading, setBtnLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     fetchQuote();
   }, []);
 
-  const fetchQuote = () => {
-    let category = ['inspirational','intelligence','knowledge','success'];
-    
-    setBtnLoading(true);
-    setErrorMsg(null);
-    axios.get(`https://api.api-ninjas.com/v1/quotes?category=${category[Math.floor(Math.random() * category.length)]}`, {
-      method: 'GET',
-      headers: { 'X-Api-Key': process.env.REACT_APP_API_KEY},
-      contentType: 'application/json',
-    }).then((res) => {
-      setBtnLoading(false);
-      setLoading(false);
-      // const random = Math.floor(Math.random() * res.data.length);
-      setQuote(res.data[0].quote);
-      setAuthor(res.data[0].author);
-
-      if (!res.data) {
-        setErrorMsg(true);
+  const fetchQuote = async () => {
+    try{
+      setLoading(true);
+      const res = await axios.get(`https://johndturn-quotableapiproxy.web.val.run/random?maxLength=160`, {
+        method: 'GET',
+        redirect: 'follow',
+      });
+      if(!res.status === 200){
+        setErrorMsg(true)
       }
-    }).catch((err) => {
-      console.log(err?.message);
-      
-    });
+      setQuote(`“${res.data[0]?.content}”`);
+      setAuthor(res.data[0]?.author);
+    }
+    catch(err){
+      console.log(err.message);
+      setErrorMsg(true);
+    }
+    finally{
+      setLoading(false);
   };
+  }
   const cardText = errorMsg
-    ? 'Oops! Check your internet connection and try again.'
-    : loading
-    ? 'Loading...'
-    : `“${quote}”`;
+    ? 'Oops! Something went wrong, please try again.'
+    : quote;
 
   return (
     <React.Fragment>
@@ -57,8 +50,7 @@ const App = () => {
         <Header Logo={Logo} />
         <Card cardText={cardText} author={author} errorMsg={errorMsg} loading={loading}>
           <Button
-            loading={btnLoading}
-            setBtnLoading={setBtnLoading}
+            loading={loading}
             errorMsg={errorMsg}
             fetchQuote={fetchQuote}
           />

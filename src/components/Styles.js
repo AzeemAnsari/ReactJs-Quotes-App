@@ -94,10 +94,38 @@ export const QuoteCard = styled.div`
   -webkit-transform: translate(-50%, -50%);
   text-align: center;
   @media only screen and (max-width: 600px) {
+    top: 53%;
     width: 80%;
     padding: 5%;
   }
 `;
+
+export const Loader = styled.div`
+  z-index:9;
+  width:100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  display:flex;
+  align-content:center;
+  justify-content:center;
+  &:before{
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    opacity: 0.7;
+    z-index:1;
+    content: "";
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+  & img{
+    width:50px;
+    z-index:99;
+  }
+`
 
 export const QuoteText = styled.h1`
   display: flex;
@@ -107,6 +135,12 @@ export const QuoteText = styled.h1`
   font-style: italic;
   @media only screen and (max-width: 600px) {
     font-size: 1.7rem;
+  &.sm {
+    font-size: 1.5rem;
+  }
+  &.xs {
+    font-size: 1.3rem;
+  }
   }
   @media only screen and (max-width: 320px) {
     font-size: 1.2rem;

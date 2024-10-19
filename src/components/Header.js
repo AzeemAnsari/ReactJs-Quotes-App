@@ -9,7 +9,7 @@ const Header = ({ Logo }) => {
     <LogoDiv>
       <img src={Logo} alt="Azeem Ansari" />
       <a
-        href="https://github.com/AzeemAnsari"
+        href="https://github.com/AzeemAnsari/ReactJs-Quotes-App"
         target="_blank"
         rel="noopener noreferrer"
       >
